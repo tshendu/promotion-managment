@@ -1,0 +1,69 @@
+<div class="page_title">
+  <span class="title">Employee</span>
+  <span class="subtitle">Add Employee</span>
+</div>
+<%= link_to "<< back to Employee", employees_path %>
+<div class="jumbotron">
+  <%= form_for :employee, url: employees_path do |f| %>
+<!-- Check for Errors -->
+    <% if @employee.errors.any? %>
+      <div id="Error_explanation">
+        <h2><%= pluralize(@employee.errors.count, "error") %>
+          prohibited from being saved
+        </h2>
+        <ul>
+          <% @employee.errors.full_messages.each do |msg| %>
+        <li>
+            <%= msg %>
+        </li>
+            </ul>
+          <% end %>
+      </div>
+<% end %>
+    <div class="field">
+      <%= f.label :First_Name %><br />
+      <%= f.text_field :first_name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :Last_Name %><br />
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "Last name" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :CID_Number %><br />
+      <%= f.text_field :cid_no, autofocus: true, autocomplete: "email" %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email_address, autofocus: true, autocomplete: "email" %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label :department %><br />
+      <%=select("employee", "department_id", Department.all.collect { |p| [ p.dep_name, p.id ] }, { include_blank: 'Select' }) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :designation %><br />
+      <%=select("employee", "designation_id", Designation.all.collect { |p| [ p.deg_name, p.id ] }, { include_blank: 'Select' }) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :Rank %><br />
+      <%=select("employee", "rank_id", Rank.all.collect { |p| [ p.rank_title, p.id ] }, { include_blank: 'Select' }) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :Date_of_joining %><br />
+      <%= f.date_field :date_of_joining, autofocus: true,autocomplete: "Last name" %>
+    </div>
+    <br />
+    <div class="field">
+    <%= f.submit "Save", class:"btn btn-primary btn-sm" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+<div class="page_title">
+  <span class="title">Employee</span>
+  <span class="subtitle">Employee Profile</span>
+</div>
+<%= link_to "<< back to Employee", employees_path %>
+
+<div class="jumbotron">
+<label>Name:</label> <%= @employee.first_name %> <%= @employee.last_name %><br />
+Designation: <%= @employee.deg_name %><br />
+Department: <%= @employee.dep_name %><br />
+Email: <%= @employee.email_address %><br />
+Age: <%= @employee.age %><br />
+CID No: <%= @employee.cid_no %><br />
+</div>

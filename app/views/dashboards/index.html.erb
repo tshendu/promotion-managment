@@ -1,0 +1,47 @@
+<div class="page_title">
+  <span class="title">Dashboard</span>
+</div>
+<div class="jumbotron">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Total No of Employees</h5>
+        <p class="card-text"><%= @employee%></p>
+        <%= link_to "Employee Details", employees_path %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">All Ranks</h5>
+        <p class="card-text"><%= @rank %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Department</h5>
+        <p class="card-text"><% @department.each do |d| %>
+          <%= d.dep_name %><br/>
+            <% end %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Recent Promotions</h5>
+        <p class="card-text"><% @promotion.each do |d| %>
+            <%= d.first_name %> <%= d.last_name %>
+          <% end %></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

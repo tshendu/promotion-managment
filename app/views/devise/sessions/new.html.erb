@@ -1,0 +1,84 @@
+<div class="login-page">
+  <div class="form">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <h2>Log in</h2>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, class:'form-control', autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, class:'form-control', autocomplete: "current-password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in", class:'btn btn-primary btn-block' %>
+      </div>
+      <%= render "devise/shared/links" %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>
+
+<style>
+    /*@import url(https://fonts.googleapis.com/css?family=Roboto:300);*/
+
+    .login-page {
+        width: 360px;
+        padding: 8% 0 0;
+        margin: auto;
+
+    }
+    .form {
+        background: lightgray;
+        position: relative;
+        z-index: 1;
+        /*background: #FFFFFF;*/
+        width: 360px;
+        margin: 0 auto 100px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+    .field {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: lightgray;
+        width: 100%;
+        border: 0;
+        margin: 0 0 10px;
+        padding: 1px;
+        box-sizing: border-box;
+        font-size: 15px;
+    }
+    .actions {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        /*background: #2f89fc;*/
+        width: 100%;
+        border: 0;
+        padding: 1px;
+        color: #FFFFFF;
+        font-size: 14px;
+        -webkit-transition: all 0.3 ease;
+        transition: all 0.3 ease;
+        cursor: pointer;
+    }
+
+
+</style>
+
+
+

@@ -1,0 +1,51 @@
+
+<div class="page_title">
+  <span class="title">Employee</span>
+  <span class="subtitle">List of employee</span>
+</div>
+<!--<h3><span class="badge badge-secondary">Employee</span></h3>-->
+<div class="jumbotron">
+<%= link_to "<button class='btn btn-primary btn-sm'><span class='fa fa-plus'>
+Add Employee</span></button>".html_safe , new_employee_path %>
+
+<table id="employees" class="table table-bordered table-striped ">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>CID</th>
+    <th>Department</th>
+    <th>Designation</th>
+    <th>Rank</th>
+    <th>Date Joined</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @employee.each do |entry| %>
+    <tr>
+      <td><%= entry.first_name + " "+ entry.last_name %></td>
+      <td><%= entry.age %></td>
+      <td><%= entry.cid_no %></td>
+      <td><%= entry.dep_name %></td>
+      <td><%= entry.deg_name %></td>
+      <td><%= entry.rank_title %></td>
+      <td><%= entry.date_of_joining %></td>
+      <td><%= link_to "<span class='fa fa-eye'>View</span>".html_safe, employee_path(entry) %>
+        <%= link_to "<span class='fa fa-edit'>Edit</span>".html_safe, edit_employee_path(entry) if policy(entry).update?%>
+        <%= link_to "<span class='fa fa-trash'>Delete</span>".html_safe, employee_path(entry) , method: :delete,
+                    data: {confirm:'Are you sure?'} if policy(entry).destroy? %>
+         </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+  <!-- Modal -->
+
+</div>
+  <script>
+      // $(document).ready(function() {
+    $("#employees").DataTable();
+          // });
+  </script>
